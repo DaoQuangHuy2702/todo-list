@@ -1,0 +1,35 @@
+.todo-item {
+    list-style-type: none;
+    padding: 10px 15px;
+    border-top: 1px solid #678c89;
+}
+
+.todo-item input {
+    margin-right: 10px;
+}
+
+.completed {
+    font-style: italic;
+    color: #c5e2d2;
+    text-decoration: line-through
+}
+
+.btn-style {
+    background: #d35e0f;
+    color: #fff;
+    border: 1px solid #d35e0f;
+    padding: 3px 7px;
+    border-radius: 50%;
+    cursor: pointer;
+    float: right;
+    outline: none;
+}
+
+.todo-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80%;
+    height: 18px;
+    display: inline-block;
+}
