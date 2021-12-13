@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+/*import React, {Component} from 'react';
 import './AddTodo.css';
 
 class AddTodo extends Component {
@@ -33,6 +33,46 @@ class AddTodo extends Component {
             </form>
         )
     }
+}
+
+export default AddTodo;*/
+
+import React, {useState} from 'react';
+import PropTypes from 'prop-types';
+import './AddTodo.css';
+
+AddTodo.propTypes = {
+    addTodo: PropTypes.func
+}
+
+AddTodo.defaultProps = {
+    addTodo: null
+}
+
+function AddTodo(props) {
+    const [title, setTitle] = useState('');
+
+    const onInputChange = (event) => {
+        setTitle(event.target.value);
+    }
+
+    const addTodo = (event) => {
+        event.preventDefault();
+        props.addTodo(title);
+        setTitle('');
+    }
+
+
+    return(
+        <form className="add-todo" onSubmit={addTodo}>
+            <input type="text" 
+                placeholder="Add todo item" 
+                className="input-text" 
+                value={title}
+                onChange={onInputChange}/>
+            <input type="submit" value="submit" className="input-submit"/>
+        </form>
+    )
 }
 
 export default AddTodo;
