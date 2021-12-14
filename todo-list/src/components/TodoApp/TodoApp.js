@@ -85,13 +85,20 @@ import './TodoApp.css';
 import Header from '../Header/Header';
 import Todos from '../Todos/Todos';
 import AddTodo from '../AddTodo/AddTodo';
+import Footer from '../Footer/Footer';
 import axios from 'axios';
 
 function TodoApp() {
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        axios.get("https://jsonplaceholder.typicode.com/todos")
+        const config = {
+            params: {
+            _limit: 8
+            }
+        }
+
+        axios.get("https://jsonplaceholder.typicode.com/todos", config)
             .then(response => setTodos(response.data));
     }, [])
 
@@ -135,6 +142,7 @@ function TodoApp() {
             <Header/>
             <AddTodo addTodo={handleAddTodo}/>
             <Todos todos={todos} handleChange={handleCheckboxChange} deleteTodo={handleDeleteTodo}/>
+            <Footer/>
         </div>
     )
 }
